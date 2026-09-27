@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sarhad Grievance Redressal & Complaint Portal | Pune</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              abyss: '#070b19',
+              navyDark: '#0b132b',
+              navyCard: '#111b38',
+              navyLight: '#1c2541',
+              slateBorder: '#273553',
+              gold: '#d4af37',
+              goldLight: '#f3e5ab',
+              goldHover: '#b89020',
+              crimson: '#e11d48',
+              crimsonDark: '#9f1239',
+              emeraldAccent: '#10b981',
+              skyAccent: '#38bdf8'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            crest: ['Cinzel', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          boxShadow: {
+            'gold-glow': '0 0 20px -3px rgba(212, 175, 55, 0.25)',
+            'crimson-glow': '0 0 20px -3px rgba(225, 29, 72, 0.35)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #070b19;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1c2541;
+      border-radius: 4px;
+      border: 1px solid #273553;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #d4af37;
+    }
+    .active-nav-btn {
+      background: linear-gradient(135deg, #d4af37 0%, #b89020 100%) !important;
+      color: #0b132b !important;
+      font-weight: 700 !important;
+      box-shadow: 0 4px 15px -2px rgba(212, 175, 55, 0.35);
+    }
+    .img-college-logo {
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+  </style>
+</head>
+
+<body class="bg-brand-abyss text-slate-100 font-sans min-h-screen flex flex-col selection:bg-brand-gold selection:text-brand-navyDark">
+
+  <!-- Top Navigation & Institutional Header -->
+  <header class="bg-brand-navyDark/95 backdrop-blur-md border-b border-brand-slateBorder sticky top-0 z-40 shadow-2xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+      <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+        
+        <!-- College Identity with <img> logo placeholder -->
+        <div class="flex items-center gap-3.5 self-start lg:self-center">
+          <div class="relative w-14 h-16 sm:w-16 sm:h-20 flex-shrink-0 flex items-center justify-center p-1 bg-gradient-to-b from-[#1c2541] to-black rounded-xl border border-brand-gold/40 shadow-lg overflow-hidden">
+            <!-- Replace logo.png with your college logo path or image name -->
+            <img 
+              src="logo.jpeg" 
+              alt="Sarhad Pune Logo" 
+              class="img-college-logo max-h-full max-w-full drop-shadow"
+              onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'text-center text-brand-gold\'><i class=\'fa-solid fa-graduation-cap text-2xl\'></i><p class=\'text-[9px] font-bold mt-1 uppercase\'>SARHAD</p></div>';"
+            />
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h1 class="text-lg sm:text-xl font-black tracking-wider text-white uppercase font-crest">
+                Sarhad, Pune
+              </h1>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-brand-gold/15 text-brand-gold border border-brand-gold/40">
+                Grievance Cell
+              </span>
+            </div>
+            <p class="text-xs text-brand-gold font-semibold italic tracking-wide font-crest">
+              "Parasparopagraho Jivanam"
+            </p>
+            <p class="text-[11px] sm:text-xs text-slate-300 font-medium">
+              Internal Grievance Redressal & Disciplinary Portal
+            </p>
+          </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <nav class="flex items-center gap-2 bg-brand-navyDark p-1.5 rounded-2xl border border-brand-slateBorder shadow-inner w-full lg:w-auto justify-between lg:justify-end overflow-x-auto">
+          <button onclick="switchTab('lodge')" id="nav-lodge" class="nav-tab-btn active-nav-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white">
+            <i class="fa-solid fa-file-circle-plus text-sm"></i>
+            <span>Lodge Grievance</span>
+          </button>
+          <button onclick="switchTab('track')" id="nav-track" class="nav-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white">
+            <i class="fa-solid fa-magnifying-glass-chart text-sm"></i>
+            <span>Track Dossier</span>
+          </button>
+          <button onclick="switchTab('admin')" id="nav-admin" class="nav-tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-2 whitespace-nowrap text-slate-300 hover:text-white border border-transparent hover:border-brand-slateBorder">
+            <i class="fa-solid fa-user-shield text-sm"></i>
+            <span>Admin Console</span>
+            <span id="adminAuthBadge" class="w-2 h-2 rounded-full bg-slate-500 ml-0.5"></span>
+          </button>
+        </nav>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 flex-grow w-full">
+    
+    <!-- Toast Notification Banner -->
+    <div id="toast" class="fixed top-20 right-5 z-50 transform transition-all duration-300 translate-x-[120%] opacity-0 max-w-md w-full pointer-events-none">
+      <div id="toast-card" class="bg-brand-navyDark border border-brand-gold text-white p-4 rounded-2xl shadow-2xl flex items-start gap-3.5 backdrop-blur-md">
+        <div id="toast-icon-container" class="w-8 h-8 rounded-lg bg-brand-gold/20 flex items-center justify-center flex-shrink-0 text-brand-gold">
+          <i id="toast-icon" class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="flex-1 pr-2">
+          <h4 id="toast-title" class="font-bold text-sm text-brand-gold">Notice</h4>
+          <p id="toast-message" class="text-xs text-slate-300 mt-0.5 leading-relaxed">Operation processed successfully.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Performance Metric Cards -->
+    <section class="grid grid-cols-2 md:grid-cols-5 gap-3.5 mb-8">
+      <div class="bg-brand-navyCard/90 p-4 rounded-2xl border border-brand-slateBorder shadow-lg flex items-center justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-wider font-semibold text-slate-400">Total Cases</p>
+          <h3 id="statTotal" class="text-xl sm:text-2xl font-black text-white mt-1">0</h3>
+        </div>
+        <div class="w-10 h-10 rounded-xl bg-brand-slateBorder/60 text-slate-300 flex items-center justify-center text-sm border border-brand-slateBorder">
+          <i class="fa-solid fa-folder-open"></i>
+        </div>
+      </div>
+
+      <div class="bg-brand-navyCard/90 p-4 rounded-2xl border border-brand-slateBorder shadow-lg flex items-center justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-wider font-semibold text-amber-400">Teacher Cases</p>
+          <h3 id="statFaculty" class="text-xl sm:text-2xl font-black text-amber-300 mt-1">0</h3>
+        </div>
+        <div class="w-10 h-10 rounded-xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-sm border border-amber-500/30">
+          <i class="fa-solid fa-chalkboard-user"></i>
+        </div>
+      </div>
+
+      <div class="bg-brand-navyCard/90 p-4 rounded-2xl border border-brand-slateBorder shadow-lg flex items-center justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-wider font-semibold text-sky-400">Under Review</p>
+          <h3 id="statPending" class="text-xl sm:text-2xl font-black text-sky-400 mt-1">0</h3>
+        </div>
+        <div class="w-10 h-10 rounded-xl bg-sky-500/15 text-sky-400 flex items-center justify-center text-sm border border-sky-500/30">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+        </div>
+      </div>
+
+      <div class="bg-brand-navyCard/90 p-4 rounded-2xl border border-brand-slateBorder shadow-lg flex items-center justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-wider font-semibold text-brand-gold">Accepted / Inquiry</p>
+          <h3 id="statAccepted" class="text-xl sm:text-2xl font-black text-brand-gold mt-1">0</h3>
+        </div>
+        <div class="w-10 h-10 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center text-sm border border-brand-gold/30">
+          <i class="fa-solid fa-shield-check"></i>
+        </div>
+      </div>
+
+      <div class="col-span-2 md:col-span-1 bg-brand-navyCard/90 p-4 rounded-2xl border border-brand-slateBorder shadow-lg flex items-center justify-between">
+        <div>
+          <p class="text-[11px] uppercase tracking-wider font-semibold text-brand-crimson">Dismissed / Rej.</p>
+          <h3 id="statRejected" class="text-xl sm:text-2xl font-black text-brand-crimson mt-1">0</h3>
+        </div>
+        <div class="w-10 h-10 rounded-xl bg-rose-500/15 text-brand-crimson flex items-center justify-center text-sm border border-rose-500/30">
+          <i class="fa-solid fa-ban"></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 1: LODGE GRIEVANCE -->
+    <div id="tabContentLodge" class="tab-pane block space-y-6">
+      <div class="bg-gradient-to-b from-brand-navyCard via-[#0d172e] to-brand-navyDark border border-brand-gold/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        
+        <div class="mb-8 border-b border-brand-slateBorder pb-6">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-lg bg-brand-gold/20 text-brand-gold text-xs font-bold uppercase tracking-wider border border-brand-gold/30">
+              Official Grievance Cell
+            </span>
+            <span class="text-xs text-slate-400">Strictly Confidential & Institutional Redressal</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">
+            Submit a Formal Grievance
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-300 mt-1 max-w-3xl leading-relaxed">
+            Students can lodge complaints regarding teachers, fellow students, campus amenities, or administration. Each ticket is assigned a formal tracking code.
+          </p>
+        </div>
+
+        <form id="lodgeForm" onsubmit="handleLodgeSubmit(event)" class="space-y-6">
+          
+          <!-- Category Selector -->
+          <div>
+            <label class="block text-sm font-semibold text-brand-goldLight mb-2.5">
+              Select Complaint Category <span class="text-brand-crimson">*</span>
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              
+              <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-brand-slateBorder bg-brand-navyDark hover:border-brand-gold cursor-pointer transition-all">
+                <input type="radio" name="grievanceCategory" value="faculty" onchange="handleCategoryChange()" checked class="accent-brand-gold w-4 h-4">
+                <div>
+                  <div class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+                    <i class="fa-solid fa-chalkboard-user text-amber-400"></i> Teacher / Faculty
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Faculty-related concern</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-brand-slateBorder bg-brand-navyDark hover:border-brand-gold cursor-pointer transition-all">
+                <input type="radio" name="grievanceCategory" value="student" onchange="handleCategoryChange()" class="accent-brand-gold w-4 h-4">
+                <div>
+                  <div class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+                    <i class="fa-solid fa-user-group text-sky-400"></i> Fellow Student
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Behavior / Misconduct</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-brand-slateBorder bg-brand-navyDark hover:border-brand-gold cursor-pointer transition-all">
+                <input type="radio" name="grievanceCategory" value="infrastructure" onchange="handleCategoryChange()" class="accent-brand-gold w-4 h-4">
+                <div>
+                  <div class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+                    <i class="fa-solid fa-building-columns text-purple-400"></i> Campus Facility
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Lab / Library / Wi-Fi</div>
+                </div>
+              </label>
+
+              <label class="flex items-center gap-3 p-3.5 rounded-2xl border border-brand-slateBorder bg-brand-navyDark hover:border-brand-gold cursor-pointer transition-all">
+                <input type="radio" name="grievanceCategory" value="other" onchange="handleCategoryChange()" class="accent-brand-gold w-4 h-4">
+                <div>
+                  <div class="text-xs sm:text-sm font-bold text-white flex items-center gap-1.5">
+                    <i class="fa-solid fa-circle-exclamation text-rose-400"></i> Other / General
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-0.5">Administration & Misc.</div>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+          <!-- Dynamic Category Content: Faculty Dropdown with exact required teachers -->
+          <div id="sectionFaculty" class="p-5 rounded-2xl bg-brand-navyDark/90 border border-brand-gold/30">
+            <label for="facultySelect" class="block text-sm font-bold text-brand-goldLight mb-1.5">
+              Select Respective Faculty Member <span class="text-brand-crimson">*</span>
+            </label>
+            <div class="relative">
+              <select id="facultySelect" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-4 py-3 text-sm appearance-none focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold">
+                <option value="" disabled selected>-- Choose Respective Teacher --</option>
+                <option value="Ass.Prof.Arti Naik">Ass.Prof.Arti Naik</option>
+                <option value="Ass.Prof.Raje Thorat">Ass.Prof.Raje Thorat</option>
+                <option value="Ass.Prof.Ashwini">Ass.Prof.Ashwini</option>
+                <option value="Ass.Prof.Tabassum Shaikh">Ass.Prof.Tabassum Shaikh</option>
+                <option value="Ass.Prof.Nilima Jajoo">Ass.Prof.Nilima Jajoo</option>
+                <option value="Ass.Prof.Sawti Mane">Ass.Prof.Sawti Mane</option>
+                <option value="Ass.Prof.Sakshi Munde">Ass.Prof.Sakshi Munde</option>
+                <option value="Ass.Prof.Nita Mote">Ass.Prof.Nita Mote</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-brand-gold">
+                <i class="fa-solid fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+            <p class="text-xs text-slate-400 mt-2 flex items-center gap-1.5">
+              <i class="fa-solid fa-circle-info text-brand-gold"></i>
+              Grievances regarding faculty members are handled with discretion by the Academic Redressal Dean.
+            </p>
+          </div>
+
+          <!-- Dynamic Category Content: Student Target -->
+          <div id="sectionStudent" class="hidden p-5 rounded-2xl bg-brand-navyDark/90 border border-sky-500/30">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Target Student Name <span class="text-brand-crimson">*</span></label>
+                <input type="text" id="targetStudentName" placeholder="e.g. Student Name" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-sky-400">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Target Class / Stream</label>
+                <input type="text" id="targetStudentClass" placeholder="e.g. TY BCA / SY BBA" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-sky-400">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Roll / PRN (If known)</label>
+                <input type="text" id="targetStudentRoll" placeholder="e.g. Roll No." class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-sky-400">
+              </div>
+            </div>
+          </div>
+
+          <!-- Dynamic Category Content: Campus Facilities -->
+          <div id="sectionInfrastructure" class="hidden p-5 rounded-2xl bg-brand-navyDark/90 border border-purple-500/30">
+            <label class="block text-xs font-semibold text-slate-300 mb-2">Affected Facility / Area <span class="text-brand-crimson">*</span></label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Computer Science Lab (Hardware/Software)" class="accent-brand-gold" checked>
+                <span>Computer Labs</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Central Library & Reading Room" class="accent-brand-gold">
+                <span>Central Library</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Smart Classroom / AV Projector" class="accent-brand-gold">
+                <span>Smart Classroom</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Campus Wi-Fi & Internet" class="accent-brand-gold">
+                <span>Campus Wi-Fi</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Washrooms & Sanitation" class="accent-brand-gold">
+                <span>Sanitation & Water</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Cafeteria & Drinking Water" class="accent-brand-gold">
+                <span>Canteen / Food</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Parking & Campus Security" class="accent-brand-gold">
+                <span>Security / Parking</span>
+              </label>
+              <label class="flex items-center gap-2 p-2.5 rounded-xl bg-brand-abyss text-xs text-slate-300 border border-brand-slateBorder cursor-pointer">
+                <input type="radio" name="infraArea" value="Sports Complex & Ground" class="accent-brand-gold">
+                <span>Sports Complex</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Complainant Identity Block with Anonymous Mode -->
+          <div class="p-5 rounded-2xl bg-brand-navyDark/70 border border-brand-slateBorder">
+            <div class="flex items-center justify-between flex-wrap gap-2 mb-4">
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-id-card text-brand-gold"></i>
+                Complainant Identity
+              </h3>
+              <!-- Anonymous Checkbox -->
+              <label class="flex items-center gap-2 cursor-pointer bg-brand-abyss px-3 py-1.5 rounded-xl border border-brand-slateBorder hover:border-brand-gold transition-all">
+                <input type="checkbox" id="chkAnonymous" onchange="handleAnonymousToggle()" class="accent-brand-gold w-4 h-4 rounded">
+                <span class="text-xs font-semibold text-brand-goldLight flex items-center gap-1.5">
+                  <i class="fa-solid fa-user-secret text-brand-gold"></i>
+                  Lodge Anonymously (Hide my Name & Credentials)
+                </span>
+              </label>
+            </div>
+
+            <div id="complainantFieldsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Student Full Name <span class="text-brand-crimson">*</span></label>
+                <input type="text" id="studName" placeholder="e.g. Student Name" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-gold">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Academic Department <span class="text-brand-crimson">*</span></label>
+                <select id="studDept" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-gold">
+                  <option value="BCA">Bachelor of Computer Applications (BCA)</option>
+                  <option value="BBA">Bachelor of Business Admin (BBA)</option>
+                  <option value="B.Com">Bachelor of Commerce (B.Com)</option>
+                  <option value="B.Sc (Comp Sci)">B.Sc Computer Science</option>
+                  <option value="M.Sc / MCA">M.Sc / MCA Postgrad</option>
+                  <option value="Arts / Humanities">Arts / Social Sciences</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Roll / PRN Number <span class="text-brand-crimson">*</span></label>
+                <input type="text" id="studRoll" placeholder="e.g. 2024-BCA-001" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-gold">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Student Email <span class="text-brand-crimson">*</span></label>
+                <input type="email" id="studEmail" placeholder="student@sarhad.edu.in" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 text-sm focus:outline-none focus:border-brand-gold">
+              </div>
+            </div>
+
+            <div id="anonymousWarning" class="hidden text-xs text-amber-300 bg-amber-950/40 border border-amber-600/40 p-3 rounded-xl mt-3 flex items-center gap-2">
+              <i class="fa-solid fa-lock text-sm"></i>
+              <span>Anonymous Mode is enabled. Your identity will remain undisclosed as <strong>"Confidential Student"</strong> in official records.</span>
+            </div>
+          </div>
+
+          <!-- Grievance Subject, Urgency, Description -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="md:col-span-2">
+              <label for="grievanceSubject" class="block text-sm font-semibold text-slate-200 mb-1">
+                Grievance Subject / Headline <span class="text-brand-crimson">*</span>
+              </label>
+              <input type="text" id="grievanceSubject" required placeholder="Clear concise summary of the issue..." class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-gold">
+            </div>
+
+            <div>
+              <label for="grievanceUrgency" class="block text-sm font-semibold text-slate-200 mb-1">
+                Urgency Level
+              </label>
+              <select id="grievanceUrgency" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-brand-gold">
+                <option value="Medium">Medium Priority</option>
+                <option value="Critical">Critical (Immediate Escalation)</option>
+                <option value="Low">Low Priority</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="grievanceDesc" class="block text-sm font-semibold text-slate-200 mb-1">
+              Detailed Narrative <span class="text-brand-crimson">*</span>
+            </label>
+            <textarea id="grievanceDesc" rows="4" required placeholder="Describe the incident, date, exact place, or specific academic difficulty clearly..." class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl p-4 text-sm focus:outline-none focus:border-brand-gold leading-relaxed"></textarea>
+          </div>
+
+          <!-- Evidence Reference URL / Details -->
+          <div class="p-4 rounded-xl bg-brand-navyDark/60 border border-dashed border-brand-slateBorder flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-brand-slateBorder/60 flex items-center justify-center text-slate-300">
+                <i class="fa-solid fa-paperclip"></i>
+              </div>
+              <div>
+                <p class="text-xs font-semibold text-slate-200">Supporting Document / Proof Reference (Optional)</p>
+                <p class="text-[11px] text-slate-400">Drive link, image URL, or document name</p>
+              </div>
+            </div>
+            <input type="text" id="evidenceLink" placeholder="e.g. drive.google.com/proof-link" class="w-full sm:w-72 bg-brand-abyss text-xs text-white border border-brand-slateBorder rounded-lg px-3 py-2 focus:outline-none focus:border-brand-gold">
+          </div>
+
+          <!-- Submission Controls -->
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-brand-slateBorder">
+            <span class="text-xs text-slate-400">
+              <i class="fa-solid fa-shield-halved text-brand-gold mr-1"></i> A unique ticket ID will be generated upon submission.
+            </span>
+            <div class="flex items-center gap-3 w-full sm:w-auto">
+              <button type="reset" class="w-1/2 sm:w-auto px-5 py-3 rounded-xl border border-brand-slateBorder text-slate-300 hover:bg-brand-navyLight text-xs sm:text-sm font-semibold transition">
+                Reset
+              </button>
+              <button type="submit" class="w-1/2 sm:w-auto px-7 py-3 rounded-xl bg-gradient-to-r from-brand-gold via-brand-goldHover to-amber-600 text-brand-navyDark font-extrabold text-xs sm:text-sm shadow-gold-glow hover:brightness-110 active:scale-95 transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Submit Grievance</span>
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <!-- TAB 2: TRACK STATUS -->
+    <div id="tabContentTrack" class="tab-pane hidden space-y-6">
+      <div class="bg-gradient-to-b from-brand-navyCard to-brand-navyDark border border-brand-slateBorder rounded-3xl p-6 sm:p-10 shadow-2xl">
+        <div class="max-w-xl mx-auto text-center space-y-3">
+          <div class="w-14 h-14 bg-brand-gold/15 text-brand-gold rounded-2xl mx-auto flex items-center justify-center text-2xl border border-brand-gold/30">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Track Grievance Dossier</h2>
+          <p class="text-xs sm:text-sm text-slate-300">
+            Enter your assigned Reference ID (e.g. <span class="font-mono text-brand-gold font-bold">SAR-2026-1048</span>) to monitor investigation milestones and committee orders.
+          </p>
+
+          <div class="mt-6 flex flex-col sm:flex-row gap-2">
+            <div class="relative flex-1">
+              <input type="text" id="trackSearchInput" placeholder="SAR-2026-XXXX" class="w-full bg-brand-abyss text-white uppercase tracking-widest font-mono border border-brand-slateBorder rounded-xl px-4 py-3 pl-10 text-sm focus:outline-none focus:border-brand-gold">
+              <i class="fa-solid fa-ticket absolute left-3.5 top-3.5 text-slate-500"></i>
+            </div>
+            <button onclick="executeTrackSearch()" class="px-7 py-3 rounded-xl bg-brand-gold text-brand-navyDark font-bold text-sm hover:bg-brand-goldHover transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span>Search Status</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tracking Output Card -->
+        <div id="trackResultDisplay" class="mt-8 pt-8 border-t border-brand-slateBorder hidden">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: ADMIN DASHBOARD -->
+    <div id="tabContentAdmin" class="tab-pane hidden space-y-6">
+      
+      <!-- Admin Authentication View (Clean Login - Zero hints, Zero passwords shown) -->
+      <div id="adminLoginBlock" class="max-w-md mx-auto bg-brand-navyCard border border-brand-gold/30 rounded-3xl p-8 shadow-2xl text-center relative overflow-hidden">
+        
+        <!-- Logo inside login dialog -->
+        <div class="w-16 h-20 mx-auto mb-3 flex items-center justify-center p-1 bg-gradient-to-b from-[#1c2541] to-black rounded-xl border border-brand-gold/40 shadow-md">
+          <!-- Replace logo.png with your college logo path or image name -->
+          <img 
+            src="logo.png" 
+            alt="Sarhad Pune Logo" 
+            class="img-college-logo max-h-full max-w-full drop-shadow"
+            onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fa-solid fa-shield-halved text-2xl text-brand-gold\'></i>';"
+          />
+        </div>
+
+        <h3 class="text-xl font-bold text-white font-crest">Administrative Access</h3>
+        <p class="text-xs text-slate-300 mt-1 mb-6">Internal Grievance Redressal Committee Portal</p>
+
+        <!-- No username or password shown anywhere on the screen -->
+        <form onsubmit="handleAdminLogin(event)" class="space-y-4 text-left">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Administrative Username</label>
+            <div class="relative">
+              <input type="text" id="adminUsername" placeholder="Enter username" autocomplete="username" required class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 pl-9 text-sm focus:outline-none focus:border-brand-gold">
+              <i class="fa-solid fa-user absolute left-3 top-3 text-slate-500 text-xs"></i>
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Access Passkey</label>
+            <div class="relative">
+              <input type="password" id="adminPassword" placeholder="Enter passkey" autocomplete="current-password" required class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3.5 py-2.5 pl-9 pr-10 text-sm focus:outline-none focus:border-brand-gold">
+              <i class="fa-solid fa-lock absolute left-3 top-3 text-slate-500 text-xs"></i>
+              <button type="button" onclick="togglePasswordVisibility()" class="absolute right-3 top-2.5 text-slate-400 hover:text-brand-gold focus:outline-none">
+                <i id="pwdToggleIcon" class="fa-solid fa-eye-slash text-xs"></i>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="w-full py-3 rounded-xl bg-brand-gold text-brand-navyDark font-extrabold text-sm hover:bg-brand-goldHover transition shadow-lg mt-2 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-arrow-right-to-bracket"></i> Authenticate
+          </button>
+        </form>
+      </div>
+
+      <!-- Admin Live Workspace (When authenticated) -->
+      <div id="adminWorkspace" class="hidden space-y-6">
+        
+        <!-- Header & Action Ribbon -->
+        <div class="bg-brand-navyCard border border-brand-slateBorder rounded-3xl p-6 shadow-xl flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2.5">
+              <h2 class="text-xl sm:text-2xl font-black text-white">Grievance Adjudication Console</h2>
+              <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-300 border border-emerald-500/40 font-bold">Authorized Session</span>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Review student filings, execute Acceptance / Rejection orders, and close dossiers.</p>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="exportGrievancesCSV()" class="px-3.5 py-2 rounded-xl bg-brand-navyDark text-slate-200 hover:text-white hover:border-brand-gold border border-brand-slateBorder text-xs font-semibold flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-file-csv text-brand-gold"></i>
+              <span>Export CSV</span>
+            </button>
+            <button onclick="seedDemoGrievances()" class="px-3.5 py-2 rounded-xl bg-brand-navyDark text-slate-200 hover:text-white border border-brand-slateBorder text-xs font-semibold flex items-center gap-1.5 transition" title="Restore sample test grievances">
+              <i class="fa-solid fa-rotate-right text-sky-400"></i>
+              <span>Reload Sample Data</span>
+            </button>
+            <button onclick="logoutAdmin()" class="px-3.5 py-2 rounded-xl bg-rose-950/40 text-brand-crimson hover:bg-rose-900/60 border border-rose-800/50 text-xs font-semibold flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-arrow-right-from-bracket"></i>
+              <span>Sign Out</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter and Search Toolbar -->
+        <div class="bg-brand-navyDark/90 border border-brand-slateBorder rounded-2xl p-4 sm:p-5 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            
+            <!-- Category Filter -->
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Filter by Category</label>
+              <select id="filterCategory" onchange="renderAdminTable()" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-gold">
+                <option value="ALL">All Categories</option>
+                <option value="faculty">Teacher / Faculty</option>
+                <option value="student">Student Misconduct</option>
+                <option value="infrastructure">Campus Facility</option>
+                <option value="other">Other / General</option>
+              </select>
+            </div>
+
+            <!-- Specific Teacher Filter (All 8 mandatory teachers listed) -->
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-brand-gold mb-1">Filter by Specific Teacher</label>
+              <select id="filterTeacher" onchange="renderAdminTable()" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-gold">
+                <option value="ALL">All Faculty Members</option>
+                <option value="Ass.Prof.Arti Naik">Ass.Prof.Arti Naik</option>
+                <option value="Ass.Prof.Raje Thorat">Ass.Prof.Raje Thorat</option>
+                <option value="Ass.Prof.Ashwini">Ass.Prof.Ashwini</option>
+                <option value="Ass.Prof.Tabassum Shaikh">Ass.Prof.Tabassum Shaikh</option>
+                <option value="Ass.Prof.Nilima Jajoo">Ass.Prof.Nilima Jajoo</option>
+                <option value="Ass.Prof.Sawti Mane">Ass.Prof.Sawti Mane</option>
+                <option value="Ass.Prof.Sakshi Munde">Ass.Prof.Sakshi Munde</option>
+                <option value="Ass.Prof.Nita Mote">Ass.Prof.Nita Mote</option>
+              </select>
+            </div>
+
+            <!-- Status Filter -->
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Filter by Status</label>
+              <select id="filterStatus" onchange="renderAdminTable()" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-gold">
+                <option value="ALL">All Statuses</option>
+                <option value="Pending Review">Pending Review</option>
+                <option value="Accepted">Accepted - Under Investigation</option>
+                <option value="Rejected">Rejected / Dismissed</option>
+                <option value="Resolved">Resolved / Closed</option>
+              </select>
+            </div>
+
+            <!-- Keyword Query -->
+            <div>
+              <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1">Search Identifier / Keyword</label>
+              <div class="relative">
+                <input type="text" id="filterKeyword" oninput="renderAdminTable()" placeholder="Ticket ID, subject, or name..." class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 pl-8 text-xs focus:outline-none focus:border-brand-gold">
+                <i class="fa-solid fa-search absolute left-2.5 top-2.5 text-slate-500 text-xs"></i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Master Grievance Grid -->
+        <div class="bg-brand-navyCard border border-brand-slateBorder rounded-3xl overflow-hidden shadow-2xl">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-brand-navyDark/90 border-b border-brand-slateBorder text-[11px] uppercase font-bold tracking-wider text-brand-goldLight">
+                  <th class="py-3.5 px-4">Ticket ID</th>
+                  <th class="py-3.5 px-4">Date</th>
+                  <th class="py-3.5 px-4">Category / Target</th>
+                  <th class="py-3.5 px-4">Subject</th>
+                  <th class="py-3.5 px-4">Student</th>
+                  <th class="py-3.5 px-4">Urgency</th>
+                  <th class="py-3.5 px-4">Status</th>
+                  <th class="py-3.5 px-4 text-center">Committee Action</th>
+                </tr>
+              </thead>
+              <tbody id="adminTableBody" class="divide-y divide-brand-slateBorder/60 text-slate-200">
+                <!-- Dynamically Rendered -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="tableZeroState" class="hidden text-center py-14">
+            <i class="fa-solid fa-folder-open text-4xl text-slate-600 mb-2"></i>
+            <p class="text-sm font-semibold text-slate-400">No grievances matching current filters.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- MODAL 1: Acceptance Dialog -->
+  <div id="modalAccept" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-navyCard border border-brand-gold/40 rounded-3xl max-w-lg w-full p-6 shadow-2xl">
+      <div class="flex items-center gap-3 border-b border-brand-slateBorder pb-4 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-brand-gold/20 text-brand-gold flex items-center justify-center text-lg">
+          <i class="fa-solid fa-shield-check"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-white">Accept & Initiate Formal Inquiry</h3>
+          <p class="text-xs text-brand-gold font-mono" id="acceptModalTicketId">SAR-2026-XXXX</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleConfirmAccept(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Designated Inquiry Officer / Committee <span class="text-brand-crimson">*</span></label>
+          <input type="text" id="acceptOfficer" required value="Disciplinary Inquiry Committee" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-gold">
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Target Closure Date</label>
+            <input type="date" id="acceptTargetDate" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-gold">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1">Inquiry Priority</label>
+            <select id="acceptPriority" class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-gold">
+              <option value="High Priority Investigation">High Priority</option>
+              <option value="Standard Inquiry">Standard Inquiry</option>
+              <option value="Urgent Syndicate Notice">Urgent Syndicate Notice</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Initial Committee Directives & Remarks <span class="text-brand-crimson">*</span></label>
+          <textarea id="acceptRemarks" required rows="3" placeholder="Specify instructions, notices to be issued, or hearing schedule..." class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl p-3 text-xs focus:outline-none focus:border-brand-gold"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-brand-slateBorder">
+          <button type="button" onclick="closeModal('modalAccept')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-gold text-brand-navyDark text-xs font-extrabold hover:bg-brand-goldHover flex items-center gap-1.5 shadow-md">
+            <i class="fa-solid fa-check"></i> Confirm Acceptance
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 2: Rejection Dialog -->
+  <div id="modalReject" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-navyCard border border-brand-crimson/50 rounded-3xl max-w-lg w-full p-6 shadow-2xl">
+      <div class="flex items-center gap-3 border-b border-brand-slateBorder pb-4 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-brand-crimson flex items-center justify-center text-lg">
+          <i class="fa-solid fa-ban"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-white">Dismiss / Reject Grievance</h3>
+          <p class="text-xs text-brand-crimson font-mono" id="rejectModalTicketId">SAR-2026-XXXX</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleConfirmReject(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Official Rejection Ground <span class="text-brand-crimson">*</span></label>
+          <select id="rejectGround" required class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-brand-crimson">
+            <option value="Insufficient Evidence / Unsubstantiated Allegation">Insufficient Evidence / Unsubstantiated Allegation</option>
+            <option value="Frivolous / Defamatory Submission">Frivolous / Defamatory Submission</option>
+            <option value="Duplicate Ticket / Already Adjudicated">Duplicate Ticket / Already Adjudicated</option>
+            <option value="Beyond Grievance Committee Jurisdiction">Beyond Grievance Committee Jurisdiction</option>
+            <option value="Procedural Non-Compliance / False Information">Procedural Non-Compliance / False Information</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Explanation to Student <span class="text-brand-crimson">*</span></label>
+          <textarea id="rejectReason" required rows="3" placeholder="Provide precise reasons why this grievance has been formally dismissed..." class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl p-3 text-xs focus:outline-none focus:border-brand-crimson"></textarea>
+        </div>
+
+        <div class="p-3 rounded-xl bg-rose-950/30 border border-brand-crimson/40 text-[11px] text-rose-200">
+          <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+          This reason will appear on the student tracking status page.
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-brand-slateBorder">
+          <button type="button" onclick="closeModal('modalReject')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-brand-crimson text-white text-xs font-extrabold hover:bg-brand-crimsonDark flex items-center gap-1.5 shadow-crimson-glow">
+            <i class="fa-solid fa-circle-xmark"></i> Issue Rejection Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 3: Mark Resolved Dialog -->
+  <div id="modalResolve" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-navyCard border border-brand-slateBorder rounded-3xl max-w-lg w-full p-6 shadow-2xl">
+      <div class="flex items-center gap-3 border-b border-brand-slateBorder pb-4 mb-4">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold text-white">Record Redressal & Close Case</h3>
+          <p class="text-xs text-emerald-400 font-mono" id="resolveModalTicketId">SAR-2026-XXXX</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleConfirmResolve(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Final Action Taken & Resolution Summary <span class="text-brand-crimson">*</span></label>
+          <textarea id="resolveNotes" required rows="4" placeholder="Detail corrective measures executed, counseling conducted, lab repairs completed, or mutual agreement..." class="w-full bg-brand-abyss text-white border border-brand-slateBorder rounded-xl p-3 text-xs focus:outline-none focus:border-brand-gold"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3 border-t border-brand-slateBorder">
+          <button type="button" onclick="closeModal('modalResolve')" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white">Cancel</button>
+          <button type="submit" class="px-5 py-2 rounded-xl bg-emerald-500 text-brand-navyDark text-xs font-extrabold hover:bg-emerald-400 flex items-center gap-1.5">
+            <i class="fa-solid fa-check"></i> Finalize & Close Case
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL 4: Full Case Dossier Viewer & Printable Slip -->
+  <div id="modalDossier" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-brand-navyCard border border-brand-gold/40 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-brand-slateBorder pb-4">
+        <div class="flex items-center gap-3">
+          <span id="dossierTicketBadge" class="font-mono text-sm font-extrabold text-brand-gold bg-brand-gold/10 px-3 py-1 rounded-xl border border-brand-gold/30"></span>
+          <span id="dossierStatusBadge" class="text-xs px-2.5 py-1 rounded-full font-bold"></span>
+        </div>
+        <button onclick="closeModal('modalDossier')" class="text-slate-400 hover:text-white p-2">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="dossierBody" class="mt-6 space-y-4">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="mt-8 pt-4 border-t border-brand-slateBorder flex flex-wrap justify-end gap-3">
+        <button onclick="printCurrentDossier()" class="px-4 py-2.5 rounded-xl bg-brand-navyDark border border-brand-slateBorder text-slate-200 text-xs font-semibold hover:border-brand-gold flex items-center gap-2">
+          <i class="fa-solid fa-print text-brand-gold"></i> Print / Save PDF
+        </button>
+        <button onclick="closeModal('modalDossier')" class="px-6 py-2.5 rounded-xl bg-brand-gold text-brand-navyDark text-xs font-extrabold hover:bg-brand-goldHover">
+          Dismiss
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Institutional Footer -->
+  <footer class="mt-auto border-t border-brand-slateBorder bg-brand-navyDark py-6 text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+      <div class="flex items-center gap-2">
+        <!-- Replace logo.png with your college logo path or image name -->
+        <img src="logo.png" alt="Logo" class="w-6 h-6 object-contain" onerror="this.style.display='none';">
+        <span class="font-bold text-white font-crest tracking-wider">SARHAD, PUNE</span>
+        <span class="text-brand-gold">•</span>
+        <span>Internal Grievance Redressal Monitoring Cell</span>
+      </div>
+      <div class="text-slate-500 font-mono text-[11px]">
+        Official Collegiate Redressal System
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const STORAGE_KEY = 'sarhad_portal_grievances_v2026';
+    const ADMIN_AUTH_KEY = 'sarhad_admin_auth_state';
+
+    let currentDossier = null;
+    let selectedTicketForAction = null;
+
+    // Seed mock data with teachers and campus facilities if empty
+    const mockSeedData = [
+      {
+        id: 'SAR-2026-1048',
+        date: '2026-09-18',
+        timestamp: 1789800000000,
+        category: 'faculty',
+        target: 'Ass.Prof.Arti Naik',
+        isAnonymous: false,
+        studentName: 'Saurabh Kadam',
+        studentDept: 'BCA',
+        studentRoll: '2024-BCA-034',
+        studentEmail: 'saurabh.k@sarhad.edu.in',
+        subject: 'Database Lab Practical timings clashing with transport bus',
+        urgency: 'Medium',
+        description: 'The extra DBMS practical session conducted by Ass.Prof.Arti Naik runs until 5:35 PM, leading to students missing the scheduled college bus.',
+        evidence: 'Bus timetable slip',
+        status: 'Accepted',
+        investigationOfficer: 'Prof. Dean of Academics',
+        targetDate: '2026-10-02',
+        adminRemarks: 'Meeting convened with Ass.Prof.Arti Naik. Alternate morning lab slot being adjusted.',
+        rejectionReason: '',
+        resolutionNotes: ''
+      },
+      {
+        id: 'SAR-2026-1092',
+        date: '2026-09-21',
+        timestamp: 1790059200000,
+        category: 'faculty',
+        target: 'Ass.Prof.Raje Thorat',
+        isAnonymous: true,
+        studentName: 'Confidential Student',
+        studentDept: 'BBA',
+        studentRoll: 'CONFIDENTIAL',
+        studentEmail: 'anonymous@sarhad.edu.in',
+        subject: 'Clarification regarding mid-term marking distribution',
+        urgency: 'Low',
+        description: 'Students require a clear rubric breakdown for the continuous internal assessment marks.',
+        evidence: 'Internal syllabus sheet',
+        status: 'Resolved',
+        investigationOfficer: 'BBA Head of Department',
+        targetDate: '2026-09-25',
+        adminRemarks: 'Discussed with faculty.',
+        rejectionReason: '',
+        resolutionNotes: 'Ass.Prof.Raje Thorat has published the comprehensive grading breakdown on the official class portal.'
+      },
+      {
+        id: 'SAR-2026-1120',
+        date: '2026-09-24',
+        timestamp: 1790318400000,
+        category: 'faculty',
+        target: 'Ass.Prof.Tabassum Shaikh',
+        isAnonymous: false,
+        studentName: 'Pranali More',
+        studentDept: 'B.Sc (Comp Sci)',
+        studentRoll: '2025-BSC-112',
+        studentEmail: 'pranali.m@sarhad.edu.in',
+        subject: 'Python practical tutorial doubt sessions request',
+        urgency: 'Medium',
+        description: 'Request for special doubt clearing tutorial sessions before end-semester lab exams.',
+        evidence: '',
+        status: 'Pending Review',
+        investigationOfficer: '',
+        targetDate: '',
+        adminRemarks: '',
+        rejectionReason: '',
+        resolutionNotes: ''
+      },
+      {
+        id: 'SAR-2026-1155',
+        date: '2026-09-25',
+        timestamp: 1790404800000,
+        category: 'infrastructure',
+        target: 'Computer Science Lab (Hardware/Software)',
+        isAnonymous: false,
+        studentName: 'Nikhil Patil',
+        studentDept: 'BCA',
+        studentRoll: '2024-BCA-019',
+        studentEmail: 'nikhil.p@sarhad.edu.in',
+        subject: 'Lab 3 terminal screens flickering and boot errors',
+        urgency: 'Critical',
+        description: 'Six computer workstations in Lab 3 have boot problems preventing completion of C++ practical tasks.',
+        evidence: 'Drive link to images',
+        status: 'Accepted',
+        investigationOfficer: 'Systems & Hardware Administrator',
+        targetDate: '2026-09-29',
+        adminRemarks: 'Hardware technician ticket #HW-502 issued for repair.',
+        rejectionReason: '',
+        resolutionNotes: ''
+      },
+      {
+        id: 'SAR-2026-1178',
+        date: '2026-09-26',
+        timestamp: 1790491200000,
+        category: 'other',
+        target: 'Other / General',
+        isAnonymous: true,
+        studentName: 'Confidential Student',
+        studentDept: 'B.Com',
+        studentRoll: 'CONFIDENTIAL',
+        studentEmail: 'anonymous@sarhad.edu.in',
+        subject: 'Canteen item pricing query',
+        urgency: 'Low',
+        description: 'Snack vendor prices over printed retail rate.',
+        evidence: '',
+        status: 'Rejected',
+        investigationOfficer: '',
+        targetDate: '',
+        adminRemarks: '',
+        rejectionReason: 'Beyond Grievance Committee Jurisdiction: Canteen pricing matters must be submitted directly to Campus Estate Officer.',
+        resolutionNotes: ''
+      }
+    ];
+
+    // Local Storage helpers
+    function fetchAllGrievances() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(mockSeedData));
+          return mockSeedData;
+        }
+        return JSON.parse(raw);
+      } catch (e) {
+        console.error('Storage reading error', e);
+        return [];
+      }
+    }
+
+    function commitGrievances(data) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.error('Storage commit error', e);
+      }
+    }
+
+    // App Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 7);
+      const targetDateInput = document.getElementById('acceptTargetDate');
+      if (targetDateInput) {
+        targetDateInput.value = tomorrow.toISOString().split('T')[0];
+      }
+
+      refreshMetrics();
+      syncAdminAuthUI();
+    });
+
+    // Navigation Switcher
+    function switchTab(tabId) {
+      const tabs = ['lodge', 'track', 'admin'];
+      tabs.forEach(t => {
+        const pane = document.getElementById(`tabContent${capitalize(t)}`);
+        const btn = document.getElementById(`nav-${t}`);
+        if (t === tabId) {
+          pane.classList.remove('hidden');
+          btn.classList.add('active-nav-btn');
+          btn.classList.remove('text-slate-300');
+        } else {
+          pane.classList.add('hidden');
+          btn.classList.remove('active-nav-btn');
+          btn.classList.add('text-slate-300');
+        }
+      });
+
+      if (tabId === 'admin') {
+        const authed = localStorage.getItem(ADMIN_AUTH_KEY) === 'true';
+        if (authed) {
+          showAdminWorkspace();
+        } else {
+          showAdminLogin();
+        }
+      }
+    }
+
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Category Selector Handler
+    function handleCategoryChange() {
+      const selected = document.querySelector('input[name="grievanceCategory"]:checked').value;
+      const secFaculty = document.getElementById('sectionFaculty');
+      const secStudent = document.getElementById('sectionStudent');
+      const secInfra = document.getElementById('sectionInfrastructure');
+
+      secFaculty.classList.add('hidden');
+      secStudent.classList.add('hidden');
+      secInfra.classList.add('hidden');
+
+      if (selected === 'faculty') {
+        secFaculty.classList.remove('hidden');
+      } else if (selected === 'student') {
+        secStudent.classList.remove('hidden');
+      } else if (selected === 'infrastructure') {
+        secInfra.classList.remove('hidden');
+      }
+    }
+
+    // Anonymous Mode Toggle
+    function handleAnonymousToggle() {
+      const isAnon = document.getElementById('chkAnonymous').checked;
+      const name = document.getElementById('studName');
+      const roll = document.getElementById('studRoll');
+      const email = document.getElementById('studEmail');
+      const warning = document.getElementById('anonymousWarning');
+
+      if (isAnon) {
+        name.value = 'Confidential Student';
+        name.disabled = true;
+        roll.value = 'CONFIDENTIAL';
+        roll.disabled = true;
+        email.value = 'anonymous@sarhad.edu.in';
+        email.disabled = true;
+        warning.classList.remove('hidden');
+      } else {
+        name.value = '';
+        name.disabled = false;
+        roll.value = '';
+        roll.disabled = false;
+        email.value = '';
+        email.disabled = false;
+        warning.classList.add('hidden');
+      }
+    }
+
+    // Toggle password visibility on admin login
+    function togglePasswordVisibility() {
+      const pwdInput = document.getElementById('adminPassword');
+      const icon = document.getElementById('pwdToggleIcon');
+      if (pwdInput.type === 'password') {
+        pwdInput.type = 'text';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      } else {
+        pwdInput.type = 'password';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      }
+    }
+
+    // Form Submission: Lodge Grievance
+    function handleLodgeSubmit(e) {
+      e.preventDefault();
+
+      const category = document.querySelector('input[name="grievanceCategory"]:checked').value;
+      let targetEntity = 'General Campus';
+
+      if (category === 'faculty') {
+        const facVal = document.getElementById('facultySelect').value;
+        if (!facVal) {
+          triggerToast('Validation Error', 'Please choose the specific faculty member from the list.', 'error');
+          return;
+        }
+        targetEntity = facVal;
+      } else if (category === 'student') {
+        const stName = document.getElementById('targetStudentName').value.trim();
+        if (!stName) {
+          triggerToast('Validation Error', 'Please specify the student target name.', 'error');
+          return;
+        }
+        const stClass = document.getElementById('targetStudentClass').value.trim();
+        targetEntity = `${stName} ${stClass ? `(${stClass})` : ''}`.trim();
+      } else if (category === 'infrastructure') {
+        const infraOption = document.querySelector('input[name="infraArea"]:checked');
+        targetEntity = infraOption ? infraOption.value : 'Campus Facility';
+      } else if (category === 'other') {
+        targetEntity = 'Administration / Other';
+      }
+
+      const isAnon = document.getElementById('chkAnonymous').checked;
+      const studentName = isAnon ? 'Confidential Student' : document.getElementById('studName').value.trim();
+      const studentEmail = isAnon ? 'anonymous@sarhad.edu.in' : document.getElementById('studEmail').value.trim();
+
+      if (!isAnon && (!studentName || !studentEmail)) {
+        triggerToast('Missing Fields', 'Please complete your student name and email credentials.', 'error');
+        return;
+      }
+
+      // Generate Ticket ID
+      const randomFour = Math.floor(1000 + Math.random() * 9000);
+      const ticketId = `SAR-2026-${randomFour}`;
+      const today = new Date().toISOString().split('T')[0];
+
+      const newRecord = {
+        id: ticketId,
+        date: today,
+        timestamp: Date.now(),
+        category: category,
+        target: targetEntity,
+        isAnonymous: isAnon,
+        studentName: studentName,
+        studentDept: document.getElementById('studDept').value,
+        studentRoll: isAnon ? 'CONFIDENTIAL' : (document.getElementById('studRoll').value.trim() || 'N/A'),
+        studentEmail: studentEmail,
+        subject: document.getElementById('grievanceSubject').value.trim(),
+        urgency: document.getElementById('grievanceUrgency').value,
+        description: document.getElementById('grievanceDesc').value.trim(),
+        evidence: document.getElementById('evidenceLink').value.trim(),
+        status: 'Pending Review',
+        investigationOfficer: '',
+        targetDate: '',
+        adminRemarks: '',
+        rejectionReason: '',
+        resolutionNotes: ''
+      };
+
+      const list = fetchAllGrievances();
+      list.unshift(newRecord);
+      commitGrievances(list);
+
+      document.getElementById('lodgeForm').reset();
+      handleCategoryChange();
+      handleAnonymousToggle();
+
+      refreshMetrics();
+      displayDossier(newRecord);
+      triggerToast('Grievance Lodged', `Assigned Ticket ID: ${ticketId}`, 'success');
+    }
+
+    // Refresh Metric Cards
+    function refreshMetrics() {
+      const list = fetchAllGrievances();
+      const total = list.length;
+      const facultyCount = list.filter(g => g.category === 'faculty').length;
+      const pendingCount = list.filter(g => g.status === 'Pending Review').length;
+      const acceptedCount = list.filter(g => g.status === 'Accepted').length;
+      const rejectedCount = list.filter(g => g.status === 'Rejected').length;
+
+      document.getElementById('statTotal').innerText = total;
+      document.getElementById('statFaculty').innerText = facultyCount;
+      document.getElementById('statPending').innerText = pendingCount;
+      document.getElementById('statAccepted').innerText = acceptedCount;
+      document.getElementById('statRejected').innerText = rejectedCount;
+    }
+
+    // Track Grievance Status
+    function executeTrackSearch() {
+      const query = document.getElementById('trackSearchInput').value.trim().toUpperCase();
+      const container = document.getElementById('trackResultDisplay');
+
+      if (!query) {
+        triggerToast('Empty Search', 'Please enter a valid Reference ID.', 'error');
+        return;
+      }
+
+      const list = fetchAllGrievances();
+      const match = list.find(g => g.id.toUpperCase() === query);
+
+      container.classList.remove('hidden');
+
+      if (!match) {
+        container.innerHTML = `
+          <div class="bg-rose-950/20 border border-brand-crimson/50 rounded-2xl p-8 text-center">
+            <i class="fa-solid fa-triangle-exclamation text-3xl text-brand-crimson mb-2"></i>
+            <h4 class="text-base font-bold text-white">Reference ID Not Found</h4>
+            <p class="text-xs text-slate-400 mt-1">No formal grievance record exists matching ticket <span class="font-mono text-rose-300 font-bold">${query}</span>.</p>
+          </div>
+        `;
+        return;
+      }
+
+      let statusBadge = '';
+      let progressPct = '25%';
+      let stepActive = 1;
+
+      if (match.status === 'Pending Review') {
+        statusBadge = '<span class="px-3 py-1 rounded-full bg-sky-950 text-sky-400 border border-sky-500/40 font-bold text-xs">Pending Review</span>';
+        progressPct = '25%';
+        stepActive = 1;
+      } else if (match.status === 'Accepted') {
+        statusBadge = '<span class="px-3 py-1 rounded-full bg-brand-gold/20 text-brand-gold border border-brand-gold/50 font-bold text-xs">Accepted & Under Inquiry</span>';
+        progressPct = '65%';
+        stepActive = 2;
+      } else if (match.status === 'Resolved') {
+        statusBadge = '<span class="px-3 py-1 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-500/40 font-bold text-xs">Resolved & Closed</span>';
+        progressPct = '100%';
+        stepActive = 3;
+      } else if (match.status === 'Rejected') {
+        statusBadge = '<span class="px-3 py-1 rounded-full bg-rose-950 text-brand-crimson border border-brand-crimson font-bold text-xs">Dismissed / Rejected</span>';
+        progressPct = '100%';
+        stepActive = 4;
+      }
+
+      container.innerHTML = `
+        <div class="bg-brand-navyDark border border-brand-slateBorder rounded-3xl p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-brand-slateBorder pb-4">
+            <div>
+              <div class="flex items-center gap-2.5">
+                <span class="font-mono text-base font-extrabold text-brand-gold">${match.id}</span>
+                <span class="text-xs text-slate-400">Filed: ${match.date}</span>
+              </div>
+              <h3 class="text-lg font-bold text-white mt-1">${match.subject}</h3>
+            </div>
+            <div>${statusBadge}</div>
+          </div>
+
+          <!-- Timeline Indicator -->
+          <div class="space-y-2">
+            <div class="h-2 w-full bg-brand-abyss rounded-full overflow-hidden border border-brand-slateBorder">
+              <div class="h-full ${match.status === 'Rejected' ? 'bg-brand-crimson' : 'bg-gradient-to-r from-brand-gold via-amber-400 to-emerald-400'} transition-all duration-700" style="width: ${progressPct}"></div>
+            </div>
+            <div class="grid grid-cols-3 text-[11px] font-semibold text-center pt-1">
+              <div class="${stepActive >= 1 ? 'text-brand-gold' : 'text-slate-500'}">1. Lodged</div>
+              <div class="${stepActive >= 2 && match.status !== 'Rejected' ? 'text-brand-gold' : 'text-slate-500'}">2. Under Inquiry</div>
+              <div class="${match.status === 'Resolved' ? 'text-emerald-400' : match.status === 'Rejected' ? 'text-brand-crimson' : 'text-slate-500'}">
+                ${match.status === 'Rejected' ? 'Case Dismissed' : '3. Closed / Redressed'}
+              </div>
+            </div>
+          </div>
+
+          <!-- Metadata Box -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs bg-brand-abyss p-4 rounded-2xl border border-brand-slateBorder">
+            <div>
+              <span class="text-slate-400 block mb-0.5">Target / Faculty:</span>
+              <span class="font-bold text-brand-goldLight text-sm">${match.target}</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block mb-0.5">Complainant Status:</span>
+              <span class="font-semibold text-white">${match.studentName} (${match.studentDept})</span>
+            </div>
+            <div class="sm:col-span-2">
+              <span class="text-slate-400 block mb-1">Grievance Narrative:</span>
+              <p class="text-slate-200 bg-brand-navyCard p-3 rounded-xl border border-brand-slateBorder/80 leading-relaxed">${match.description}</p>
+            </div>
+
+            ${match.status === 'Accepted' ? `
+              <div class="sm:col-span-2 bg-brand-gold/10 border border-brand-gold/30 p-3.5 rounded-xl space-y-1">
+                <span class="text-brand-gold font-bold text-xs flex items-center gap-1.5">
+                  <i class="fa-solid fa-user-tie"></i> Inquiry Officer: ${match.investigationOfficer || 'Grievance Committee'}
+                </span>
+                <p class="text-slate-300 text-xs">${match.adminRemarks || 'Investigation proceeding according to institutional norms.'}</p>
+                ${match.targetDate ? `<p class="text-[11px] text-slate-400">Target Closure: <strong class="text-white">${match.targetDate}</strong></p>` : ''}
+              </div>
+            ` : ''}
+
+            ${match.status === 'Rejected' ? `
+              <div class="sm:col-span-2 bg-rose-950/30 border border-brand-crimson/50 p-3.5 rounded-xl">
+                <span class="text-brand-crimson font-bold text-xs flex items-center gap-1.5">
+                  <i class="fa-solid fa-triangle-exclamation"></i> Formal Reason for Rejection / Dismissal:
+                </span>
+                <p class="text-rose-200 text-xs mt-1 leading-relaxed">${match.rejectionReason}</p>
+              </div>
+            ` : ''}
+
+            ${match.status === 'Resolved' ? `
+              <div class="sm:col-span-2 bg-emerald-950/30 border border-emerald-500/40 p-3.5 rounded-xl">
+                <span class="text-emerald-400 font-bold text-xs flex items-center gap-1.5">
+                  <i class="fa-solid fa-circle-check"></i> Redressal Action Taken:
+                </span>
+                <p class="text-slate-200 text-xs mt-1 leading-relaxed">${match.resolutionNotes}</p>
+              </div>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // Admin Auth State Handlers
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('adminUsername').value.trim();
+      const pass = document.getElementById('adminPassword').value.trim();
+
+      // Accepted credentials in JS logic without displaying them on page
+      const isValid = (user.toLowerCase() === 'admin' && (pass === 'admin123' || pass === 'sarhad@2025'));
+
+      if (isValid) {
+        localStorage.setItem(ADMIN_AUTH_KEY, 'true');
+        syncAdminAuthUI();
+        showAdminWorkspace();
+        triggerToast('Authentication Granted', 'Welcome to the Redressal Adjudication Console.', 'success');
+      } else {
+        triggerToast('Access Denied', 'Invalid administrative credentials.', 'error');
+      }
+    }
+
+    function logoutAdmin() {
+      localStorage.removeItem(ADMIN_AUTH_KEY);
+      syncAdminAuthUI();
+      showAdminLogin();
+      triggerToast('Signed Out', 'Administrative session closed.', 'info');
+    }
+
+    function syncAdminAuthUI() {
+      const isAuthed = localStorage.getItem(ADMIN_AUTH_KEY) === 'true';
+      const badge = document.getElementById('adminAuthBadge');
+      if (isAuthed) {
+        badge.className = 'w-2 h-2 rounded-full bg-emerald-400 ml-0.5';
+      } else {
+        badge.className = 'w-2 h-2 rounded-full bg-slate-500 ml-0.5';
+      }
+    }
+
+    function showAdminWorkspace() {
+      document.getElementById('adminLoginBlock').classList.add('hidden');
+      document.getElementById('adminWorkspace').classList.remove('hidden');
+      renderAdminTable();
+    }
+
+    function showAdminLogin() {
+      document.getElementById('adminLoginBlock').classList.remove('hidden');
+      document.getElementById('adminWorkspace').classList.add('hidden');
+      document.getElementById('adminPassword').value = '';
+    }
+
+    // Render Admin Management Table with Filters
+    function renderAdminTable() {
+      const list = fetchAllGrievances();
+      const catVal = document.getElementById('filterCategory').value;
+      const teacherVal = document.getElementById('filterTeacher').value;
+      const statusVal = document.getElementById('filterStatus').value;
+      const keyword = document.getElementById('filterKeyword').value.toLowerCase().trim();
+
+      const tbody = document.getElementById('adminTableBody');
+      const zeroState = document.getElementById('tableZeroState');
+      tbody.innerHTML = '';
+
+      const filtered = list.filter(item => {
+        if (catVal !== 'ALL' && item.category !== catVal) return false;
+        if (teacherVal !== 'ALL' && item.target !== teacherVal) return false;
+        if (statusVal !== 'ALL' && item.status !== statusVal) return false;
+        if (keyword) {
+          const mId = item.id.toLowerCase().includes(keyword);
+          const mSub = item.subject.toLowerCase().includes(keyword);
+          const mTarget = item.target.toLowerCase().includes(keyword);
+          const mStud = item.studentName.toLowerCase().includes(keyword);
+          if (!mId && !mSub && !mTarget && !mStud) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        zeroState.classList.remove('hidden');
+        return;
+      } else {
+        zeroState.classList.add('hidden');
+      }
+
+      filtered.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-brand-navyDark/60 transition-colors';
+
+        // Badges
+        let statusBadge = '';
+        if (item.status === 'Pending Review') {
+          statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-sky-950 text-sky-400 border border-sky-500/40">Pending</span>';
+        } else if (item.status === 'Accepted') {
+          statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-brand-gold/20 text-brand-gold border border-brand-gold/40">Accepted</span>';
+        } else if (item.status === 'Rejected') {
+          statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-rose-950 text-brand-crimson border border-brand-crimson">Rejected</span>';
+        } else if (item.status === 'Resolved') {
+          statusBadge = '<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-950 text-emerald-300 border border-emerald-500/40">Resolved</span>';
+        }
+
+        let urgencyClass = 'text-slate-300';
+        if (item.urgency === 'Critical') urgencyClass = 'text-brand-crimson font-black';
+        else if (item.urgency === 'Medium') urgencyClass = 'text-amber-400 font-bold';
+
+        tr.innerHTML = `
+          <td class="py-3 px-4 font-mono font-bold text-brand-gold">${item.id}</td>
+          <td class="py-3 px-4 text-slate-400 whitespace-nowrap">${item.date}</td>
+          <td class="py-3 px-4">
+            <div class="font-bold text-white">${item.target}</div>
+            <div class="text-[10px] text-slate-400 uppercase tracking-wider">${item.category}</div>
+          </td>
+          <td class="py-3 px-4 max-w-xs truncate font-medium text-slate-200" title="${item.subject}">${item.subject}</td>
+          <td class="py-3 px-4 text-slate-300 whitespace-nowrap">
+            ${item.isAnonymous ? '<span class="text-brand-gold text-xs italic"><i class="fa-solid fa-user-secret"></i> Masked</span>' : item.studentName}
+          </td>
+          <td class="py-3 px-4 ${urgencyClass}">${item.urgency}</td>
+          <td class="py-3 px-4">${statusBadge}</td>
+          <td class="py-3 px-4 text-center">
+            <div class="flex items-center justify-center gap-1.5">
+              <button onclick="displayDossierById('${item.id}')" title="View Full Dossier" class="p-1.5 rounded-lg bg-brand-abyss hover:bg-brand-gold hover:text-brand-navyDark text-slate-300 transition">
+                <i class="fa-solid fa-eye text-xs"></i>
+              </button>
+              
+              <!-- Accept Action Button -->
+              <button onclick="openAcceptModal('${item.id}')" title="Accept & Investigate" class="p-1.5 rounded-lg bg-brand-abyss hover:bg-brand-gold hover:text-brand-navyDark text-brand-gold transition">
+                <i class="fa-solid fa-circle-check text-xs"></i>
+              </button>
+
+              <!-- Reject Action Button -->
+              <button onclick="openRejectModal('${item.id}')" title="Reject / Dismiss" class="p-1.5 rounded-lg bg-brand-abyss hover:bg-brand-crimson hover:text-white text-brand-crimson transition">
+                <i class="fa-solid fa-circle-xmark text-xs"></i>
+              </button>
+
+              <!-- Resolve Action Button -->
+              <button onclick="openResolveModal('${item.id}')" title="Mark Case Resolved" class="p-1.5 rounded-lg bg-brand-abyss hover:bg-emerald-500 hover:text-brand-navyDark text-emerald-400 transition">
+                <i class="fa-solid fa-check-double text-xs"></i>
+              </button>
+
+              <!-- Delete Action Button -->
+              <button onclick="deleteGrievanceRecord('${item.id}')" title="Delete Entry" class="p-1.5 rounded-lg bg-brand-abyss hover:bg-red-900 hover:text-white text-slate-500 transition">
+                <i class="fa-solid fa-trash-can text-xs"></i>
+              </button>
+            </div>
+          </td>
+        `;
+
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Modal Control: Accept
+    function openAcceptModal(ticketId) {
+      selectedTicketForAction = ticketId;
+      document.getElementById('acceptModalTicketId').innerText = ticketId;
+      document.getElementById('modalAccept').classList.remove('hidden');
+    }
+
+    function handleConfirmAccept(e) {
+      e.preventDefault();
+      if (!selectedTicketForAction) return;
+
+      const officer = document.getElementById('acceptOfficer').value.trim();
+      const targetDate = document.getElementById('acceptTargetDate').value;
+      const priority = document.getElementById('acceptPriority').value;
+      const remarks = document.getElementById('acceptRemarks').value.trim();
+
+      const list = fetchAllGrievances();
+      const idx = list.findIndex(g => g.id === selectedTicketForAction);
+
+      if (idx !== -1) {
+        list[idx].status = 'Accepted';
+        list[idx].investigationOfficer = `${officer} (${priority})`;
+        list[idx].targetDate = targetDate;
+        list[idx].adminRemarks = remarks;
+        commitGrievances(list);
+
+        closeModal('modalAccept');
+        renderAdminTable();
+        refreshMetrics();
+        triggerToast('Grievance Accepted', `Ticket ${selectedTicketForAction} is now under investigation.`, 'success');
+      }
+    }
+
+    // Modal Control: Reject
+    function openRejectModal(ticketId) {
+      selectedTicketForAction = ticketId;
+      document.getElementById('rejectModalTicketId').innerText = ticketId;
+      document.getElementById('modalReject').classList.remove('hidden');
+    }
+
+    function handleConfirmReject(e) {
+      e.preventDefault();
+      if (!selectedTicketForAction) return;
+
+      const ground = document.getElementById('rejectGround').value;
+      const reasonDetail = document.getElementById('rejectReason').value.trim();
+      const fullReason = `${ground}: ${reasonDetail}`;
+
+      const list = fetchAllGrievances();
+      const idx = list.findIndex(g => g.id === selectedTicketForAction);
+
+      if (idx !== -1) {
+        list[idx].status = 'Rejected';
+        list[idx].rejectionReason = fullReason;
+        commitGrievances(list);
+
+        closeModal('modalReject');
+        renderAdminTable();
+        refreshMetrics();
+        triggerToast('Grievance Dismissed', `Ticket ${selectedTicketForAction} has been rejected.`, 'error');
+      }
+    }
+
+    // Modal Control: Resolve
+    function openResolveModal(ticketId) {
+      selectedTicketForAction = ticketId;
+      document.getElementById('resolveModalTicketId').innerText = ticketId;
+      document.getElementById('modalResolve').classList.remove('hidden');
+    }
+
+    function handleConfirmResolve(e) {
+      e.preventDefault();
+      if (!selectedTicketForAction) return;
+
+      const notes = document.getElementById('resolveNotes').value.trim();
+      const list = fetchAllGrievances();
+      const idx = list.findIndex(g => g.id === selectedTicketForAction);
+
+      if (idx !== -1) {
+        list[idx].status = 'Resolved';
+        list[idx].resolutionNotes = notes;
+        commitGrievances(list);
+
+        closeModal('modalResolve');
+        renderAdminTable();
+        refreshMetrics();
+        triggerToast('Case Closed', `Resolution documented for ticket ${selectedTicketForAction}.`, 'success');
+      }
+    }
+
+    // Delete Record
+    function deleteGrievanceRecord(ticketId) {
+      const list = fetchAllGrievances();
+      const updated = list.filter(g => g.id !== ticketId);
+      commitGrievances(updated);
+      renderAdminTable();
+      refreshMetrics();
+      triggerToast('Entry Removed', `Record ${ticketId} removed.`, 'info');
+    }
+
+    // Dossier Viewers
+    function displayDossierById(id) {
+      const list = fetchAllGrievances();
+      const item = list.find(g => g.id === id);
+      if (item) displayDossier(item);
+    }
+
+    function displayDossier(item) {
+      currentDossier = item;
+      const modal = document.getElementById('modalDossier');
+      document.getElementById('dossierTicketBadge').innerText = item.id;
+
+      const badge = document.getElementById('dossierStatusBadge');
+      badge.innerText = item.status;
+      if (item.status === 'Accepted') {
+        badge.className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-brand-gold/20 text-brand-gold border border-brand-gold/40';
+      } else if (item.status === 'Rejected') {
+        badge.className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-rose-950 text-brand-crimson border border-brand-crimson';
+      } else if (item.status === 'Resolved') {
+        badge.className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-emerald-950 text-emerald-400 border border-emerald-500/40';
+      } else {
+        badge.className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-sky-950 text-sky-400 border border-sky-500/40';
+      }
+
+      const body = document.getElementById('dossierBody');
+      body.innerHTML = `
+        <div class="space-y-4">
+          <div>
+            <span class="text-[11px] uppercase tracking-wider text-slate-400 font-bold block mb-1">Grievance Subject</span>
+            <h3 class="text-base sm:text-lg font-bold text-white">${item.subject}</h3>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 bg-brand-abyss p-3.5 rounded-2xl border border-brand-slateBorder text-xs">
+            <div>
+              <span class="text-slate-400 block">Category</span>
+              <span class="font-bold text-white capitalize">${item.category}</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block">Target / Entity</span>
+              <span class="font-bold text-brand-gold">${item.target}</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block">Date Lodged</span>
+              <span class="font-bold text-white">${item.date}</span>
+            </div>
+            <div>
+              <span class="text-slate-400 block">Urgency</span>
+              <span class="font-bold text-amber-400">${item.urgency}</span>
+            </div>
+          </div>
+
+          <div class="bg-brand-abyss p-3.5 rounded-2xl border border-brand-slateBorder text-xs space-y-1">
+            <span class="text-slate-400 block font-semibold mb-1">Complainant Information</span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div><strong class="text-slate-300">Name:</strong> ${item.studentName}</div>
+              <div><strong class="text-slate-300">Dept:</strong> ${item.studentDept}</div>
+              <div><strong class="text-slate-300">Roll/PRN:</strong> ${item.studentRoll}</div>
+            </div>
+            <div class="pt-1"><strong class="text-slate-300">Contact Email:</strong> ${item.studentEmail}</div>
+          </div>
+
+          <div>
+            <span class="text-[11px] uppercase tracking-wider text-slate-400 font-bold block mb-1">Statement & Narrative</span>
+            <div class="bg-brand-abyss p-3.5 rounded-2xl border border-brand-slateBorder text-xs text-slate-200 leading-relaxed whitespace-pre-wrap">${item.description}</div>
+          </div>
+
+          ${item.evidence ? `
+            <div class="text-xs bg-brand-abyss p-3 rounded-xl border border-brand-slateBorder flex items-center gap-2">
+              <i class="fa-solid fa-paperclip text-brand-gold"></i>
+              <span class="text-slate-400">Supporting Evidence:</span>
+              <span class="text-white font-mono truncate">${item.evidence}</span>
+            </div>
+          ` : ''}
+
+          ${item.rejectionReason ? `
+            <div class="bg-rose-950/30 border border-brand-crimson/50 p-4 rounded-2xl">
+              <span class="text-brand-crimson font-bold text-xs flex items-center gap-1.5 mb-1">
+                <i class="fa-solid fa-ban"></i> Official Committee Rejection Order
+              </span>
+              <p class="text-rose-100 text-xs leading-relaxed">${item.rejectionReason}</p>
+            </div>
+          ` : ''}
+
+          ${item.adminRemarks ? `
+            <div class="bg-brand-gold/10 border border-brand-gold/30 p-4 rounded-2xl">
+              <span class="text-brand-gold font-bold text-xs flex items-center gap-1.5 mb-1">
+                <i class="fa-solid fa-user-tie"></i> Committee Inquiry Record
+              </span>
+              <p class="text-slate-200 text-xs">${item.adminRemarks}</p>
+              ${item.investigationOfficer ? `<p class="text-[11px] text-slate-400 mt-1">Lead Officer: <span class="text-brand-gold">${item.investigationOfficer}</span></p>` : ''}
+            </div>
+          ` : ''}
+
+          ${item.resolutionNotes ? `
+            <div class="bg-emerald-950/30 border border-emerald-500/40 p-4 rounded-2xl">
+              <span class="text-emerald-400 font-bold text-xs flex items-center gap-1.5 mb-1">
+                <i class="fa-solid fa-circle-check"></i> Redressal Action Summary
+              </span>
+              <p class="text-emerald-100 text-xs leading-relaxed">${item.resolutionNotes}</p>
+            </div>
+          ` : ''}
+        </div>
+      `;
+
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+
+    // Print Case Dossier with logo.png reference
+    function printCurrentDossier() {
+      if (!currentDossier) return;
+      const d = currentDossier;
+      const win = window.open('', '_blank', 'width=800,height=700');
+      win.document.write(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>Sarhad Dossier - ${d.id}</title>
+          <style>
+            body { font-family: 'Times New Roman', Times, serif; padding: 40px; color: #111; line-height: 1.5; }
+            .header { text-align: center; border-bottom: 2px solid #000; padding-bottom: 12px; margin-bottom: 20px; }
+            .header img { height: 65px; margin-bottom: 5px; }
+            .header h2 { margin: 0; text-transform: uppercase; font-size: 22px; letter-spacing: 1px; }
+            .header p { margin: 3px 0; font-size: 13px; }
+            .badge { display: inline-block; padding: 3px 10px; font-weight: bold; border: 1px solid #333; margin-top: 5px; font-size: 12px; }
+            table { width: 100%; border-collapse: collapse; margin-top: 15px; margin-bottom: 15px; font-size: 13px; }
+            th, td { border: 1px solid #777; padding: 8px; text-align: left; }
+            th { background: #f3f3f3; width: 30%; }
+            .narrative { background: #fafafa; border: 1px solid #999; padding: 12px; margin-top: 10px; font-size: 13px; }
+            .footer { margin-top: 50px; display: flex; justify-content: space-between; font-size: 12px; border-top: 1px solid #bbb; padding-top: 15px; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <!-- Replace logo.png with your college logo path or image name -->
+            <img src="logo.png" alt="Sarhad Pune" onerror="this.style.display='none';">
+            <h2>SARHAD, PUNE</h2>
+            <p>Internal Grievance Redressal Committee (IGRC)</p>
+            <p><strong>OFFICIAL GRIEVANCE DOSSIER & PROCEEDING RECORD</strong></p>
+            <div class="badge">STATUS: ${d.status.toUpperCase()}</div>
+          </div>
+
+          <table>
+            <tr><th>Reference Ticket ID</th><td><strong>${d.id}</strong></td></tr>
+            <tr><th>Filing Date</th><td>${d.date}</td></tr>
+            <tr><th>Category</th><td>${d.category.toUpperCase()}</td></tr>
+            <tr><th>Target Entity</th><td><strong>${d.target}</strong></td></tr>
+            <tr><th>Complainant Student</th><td>${d.studentName} (${d.studentDept}) - PRN: ${d.studentRoll}</td></tr>
+            <tr><th>Official Subject</th><td><strong>${d.subject}</strong></td></tr>
+            <tr><th>Assigned Urgency</th><td>${d.urgency}</td></tr>
+          </table>
+
+          <div><strong>Complainant Statement:</strong></div>
+          <div class="narrative">${d.description}</div>
+
+          ${d.rejectionReason ? `
+            <div style="margin-top:15px; border:1px solid #c00; padding:10px; background:#fff2f2;">
+              <strong style="color:#c00;">Formal Committee Rejection Order & Reasons:</strong><br/>
+              ${d.rejectionReason}
+            </div>
+          ` : ''}
+
+          ${d.adminRemarks ? `
+            <div style="margin-top:15px; border:1px solid #996515; padding:10px; background:#fffbf0;">
+              <strong>Inquiry Directives:</strong><br/>
+              ${d.adminRemarks}<br/>
+              <small>Lead Officer: ${d.investigationOfficer}</small>
+            </div>
+          ` : ''}
+
+          ${d.resolutionNotes ? `
+            <div style="margin-top:15px; border:1px solid #008000; padding:10px; background:#f0fff0;">
+              <strong style="color:#006400;">Final Redressal Action & Outcome:</strong><br/>
+              ${d.resolutionNotes}
+            </div>
+          ` : ''}
+
+          <div class="footer">
+            <div>Officer Signature / Seal<br/><br/>______________________</div>
+            <div style="text-align:right;">Generated via Sarhad Grievance System<br/>Printed: ${new Date().toLocaleString()}</div>
+          </div>
+          <script>window.print();<\/script>
+        </body>
+        </html>
+      `);
+      win.document.close();
+    }
+
+    // CSV Export
+    function exportGrievancesCSV() {
+      const list = fetchAllGrievances();
+      if (list.length === 0) {
+        triggerToast('No Data', 'Repository is currently empty.', 'error');
+        return;
+      }
+
+      let csv = 'Ticket ID,Date,Category,Target,Complainant Name,Department,Roll PRN,Subject,Urgency,Status,Rejection Ground,Resolution Notes\n';
+      list.forEach(g => {
+        csv += `"${g.id}","${g.date}","${g.category}","${g.target.replace(/"/g, '""')}","${g.studentName.replace(/"/g, '""')}","${g.studentDept}","${g.studentRoll}","${g.subject.replace(/"/g, '""')}","${g.urgency}","${g.status}","${(g.rejectionReason || '').replace(/"/g, '""')}","${(g.resolutionNotes || '').replace(/"/g, '""')}"\n`;
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = `Sarhad_Grievances_${new Date().toISOString().slice(0, 10)}.csv`;
+      link.click();
+      triggerToast('Exported', 'Grievance list exported as CSV.', 'success');
+    }
+
+    // Reload Demo Seed Data
+    function seedDemoGrievances() {
+      commitGrievances(mockSeedData);
+      renderAdminTable();
+      refreshMetrics();
+      triggerToast('Reset', 'Sample grievances reloaded.', 'info');
+    }
+
+    // Toast Alert Engine
+    function triggerToast(title, message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const tTitle = document.getElementById('toast-title');
+      const tMsg = document.getElementById('toast-message');
+      const tCard = document.getElementById('toast-card');
+      const tIcon = document.getElementById('toast-icon');
+      const tContainer = document.getElementById('toast-icon-container');
+
+      tTitle.innerText = title;
+      tMsg.innerText = message;
+
+      if (type === 'error') {
+        tCard.className = 'bg-brand-navyDark border border-brand-crimson text-white p-4 rounded-2xl shadow-crimson-glow flex items-start gap-3.5 backdrop-blur-md';
+        tTitle.className = 'font-bold text-sm text-brand-crimson';
+        tContainer.className = 'w-8 h-8 rounded-lg bg-rose-500/20 flex items-center justify-center flex-shrink-0 text-brand-crimson';
+        tIcon.className = 'fa-solid fa-circle-xmark';
+      } else if (type === 'info') {
+        tCard.className = 'bg-brand-navyDark border border-sky-400 text-white p-4 rounded-2xl shadow-xl flex items-start gap-3.5 backdrop-blur-md';
+        tTitle.className = 'font-bold text-sm text-sky-400';
+        tContainer.className = 'w-8 h-8 rounded-lg bg-sky-500/20 flex items-center justify-center flex-shrink-0 text-sky-400';
+        tIcon.className = 'fa-solid fa-circle-info';
+      } else {
+        tCard.className = 'bg-brand-navyDark border border-brand-gold text-white p-4 rounded-2xl shadow-gold-glow flex items-start gap-3.5 backdrop-blur-md';
+        tTitle.className = 'font-bold text-sm text-brand-gold';
+        tContainer.className = 'w-8 h-8 rounded-lg bg-brand-gold/20 flex items-center justify-center flex-shrink-0 text-brand-gold';
+        tIcon.className = 'fa-solid fa-circle-check';
+      }
+
+      toast.classList.remove('translate-x-[120%]', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-x-[120%]', 'opacity-0');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
